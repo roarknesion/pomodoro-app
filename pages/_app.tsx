@@ -12,7 +12,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Component {...pageProps} />
 
       <footer className='flex justify-center items-center w-full mt-auto pt-8 pb-2'>
-        <Link href='https://github.com/roarknesion'>
+        <Link href='https://github.com/roarknesion/pomodoro-app'>
           <a
             className='flex justify-start items-center p-2 text-sm font-bold rounded-lg opacity-50 transition-opacity hover:opacity-100'
             target='_blank'
