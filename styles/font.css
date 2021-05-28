@@ -1,0 +1,23 @@
+@font-face {
+  font-family: kodchasan;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/kodchasan-light.ttf');
+}
+
+@font-face {
+  font-family: kodchasan;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/kodchasan-medium.ttf');
+}
+
+@font-face {
+  font-family: kodchasan;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/kodchasan-bold.ttf');
+}

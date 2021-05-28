@@ -1,0 +1,68 @@
+* {
+  scrollbar-color: rgb(165, 180, 252) transparent;
+}
+
+::-webkit-scrollbar {
+  @apply w-4 h-4;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-indigo-300 bg-opacity-80 bg-clip-content rounded-lg border-4 border-solid border-transparent;
+}
+
+::-webkit-scrollbar-corner {
+  @apply bg-transparent;
+}
+
+::selection {
+  @apply bg-indigo-500 bg-opacity-20;
+}
+
+:focus-visible {
+  @apply ring-4 ring-indigo-300 ring-opacity-50 outline-none transition-shadow;
+}
+
+html {
+  @apply h-full overflow-y-scroll bg-white text-indigo-900 font-medium cursor-default;
+}
+
+body {
+  @apply h-full px-4;
+}
+
+#__next {
+  @apply container flex flex-col justify-start items-start w-full min-h-full mx-auto gap-4 text-sm;
+}
+
+input,
+button {
+  font-weight: inherit;
+}
+
+input:focus,
+button:focus {
+  @apply outline-none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  @apply appearance-none;
+}
+
+select {
+  @apply appearance-none bg-no-repeat;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='3' stroke='%236366F1' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpolyline points='6 9 12 15 18 9' /%3E%3C/svg%3E");
+  background-position: right 0.75rem center;
+  background-size: 14px;
+
+  cursor: pointer;
+}
