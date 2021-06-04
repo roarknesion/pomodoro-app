@@ -2,7 +2,17 @@
 command = "npm run build"
 publish = "out"
 
+[dev]
+framework = "#static"
+publish = "out"
+autoLaunch = true
+
+[[redirects]]
+from = "/*/edit"
+to = "/[project]/edit.html"
+status = 200
+
 [[redirects]]
 from = "/*"
-to = "/"
+to = "/[project].html"
 status = 200
