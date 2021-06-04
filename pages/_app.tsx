@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 
 import '~/styles/font.css'
 import '~/styles/base.css'
@@ -9,6 +10,11 @@ import Link from 'next/link'
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
+      <Head>
+        <title>Pomodoro App</title>
+        <link rel='icon' type='image/svg+xml' href='favicon.svg' />
+      </Head>
+
       <Component {...pageProps} />
 
       <footer className='flex justify-center items-center w-full mt-auto pt-8 pb-2'>
