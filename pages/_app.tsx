@@ -12,7 +12,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <title>Pomodoro App</title>
-        <link rel='icon' type='image/svg+xml' href='favicon.svg' />
+        <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
       </Head>
 
       <Component {...pageProps} />

@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   mode: 'jit',
   purge: ['**/*.{ts,tsx}'],
@@ -8,10 +10,20 @@ module.exports = {
       'md': '768px'
     },
 
-    extend: {
-      fontFamily: {
-        sans: ['kodchasan', 'sans-serif']
-      }
+    fontFamily: {
+      sans: ['kodchasan', 'sans-serif']
+    },
+
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+
+      indigo: colors.indigo,
+      pink: colors.pink,
+      teal: colors.teal,
+      cyan: colors.cyan
     }
   }
 }

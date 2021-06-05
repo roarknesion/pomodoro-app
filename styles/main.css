@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-indigo-300 bg-opacity-80 bg-clip-content rounded-lg border-4 border-solid border-transparent;
+  @apply bg-indigo-500 bg-opacity-60 bg-clip-content rounded-lg border-4 border-solid border-transparent;
 }
 
 ::-webkit-scrollbar-corner {

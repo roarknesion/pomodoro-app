@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 
 const style = {
   primary: `flex justify-start items-center px-4 py-2 gap-2 font-bold rounded-lg transition-colors hover:bg-indigo-100 text-indigo-700`,
+  success: `flex justify-start items-center px-4 py-2 gap-2 font-bold rounded-lg transition-colors hover:bg-cyan-100 text-cyan-700`,
   danger: `flex justify-start items-center px-4 py-2 gap-2 font-bold rounded-lg transition-colors hover:bg-pink-100 text-pink-700`
 }
 

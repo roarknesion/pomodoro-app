@@ -31,3 +31,12 @@ export type List = Item[]
 export type StateList = State<List>
 export type StateItem = State<Item>
 export type StateWrap = ReturnType<typeof wrap>
+
+export type Component = {
+  project: Item
+
+  state: {
+    project: StateWrap
+    sound: Sound.StateWrap
+  }
+}

@@ -8,13 +8,11 @@ import Logo from '~/components/logo'
 import Button from '~/components/button'
 import Header from '~/components/header'
 import { useRouter } from 'next/router'
+import { useState } from '@hookstate/core'
 
 const Form = ({ title, children }: { title: string; children: ReactNode }) => (
-  <div className='flex flex-col w-full gap-4 max-w-xs mx-auto mt-8'>
-    <h3 className='flex flex-col font-bold text-lg'>
-      <span>{title}</span>
-      <hr className='block w-full h-[2px] bg-indigo-100 rounded-lg border-none' />
-    </h3>
+  <div className='flex flex-col w-full gap-4 max-w-xs mx-auto mt-12'>
+    <h3 className='flex flex-col font-bold text-lg'>{title}</h3>
 
     {children}
   </div>
@@ -22,29 +20,34 @@ const Form = ({ title, children }: { title: string; children: ReactNode }) => (
 
 const FormItem = ({ title, children }: { title: string; children: ReactNode }) => (
   <label className='flex flex-col gap-1'>
-    <span className='w-40 flex items-center font-bold pl-1'>{title}</span>
+    <span className='w-40 flex items-center font-bold pl-1 text-indigo-900 text-opacity-50'>
+      {title}
+    </span>
 
     {children}
   </label>
 )
 
-const Component = ({
-  project,
-  state
-}: {
-  project: Type.Project.Item
-
-  state: {
-    project: Type.Project.StateWrap
-    sound: Type.Sound.StateWrap
-  }
-}) => {
+const Component = ({ project, state }: Type.Project.Component) => {
   const router = useRouter()
+  const local = useState<Type.Project.Item>(JSON.parse(JSON.stringify(project)))
 
   return (
     <>
       <Header>
         <Logo title={project.title} />
+
+        <Button
+          click={() => {
+            state.project.get(project.id).set(JSON.parse(JSON.stringify(local.get())))
+            router.push(`/${local.id.get()}/edit`)
+          }}
+          kind='success'
+        >
+          <Icon name='check' />
+
+          <span>Save</span>
+        </Button>
 
         <Button
           click={() => {
@@ -61,9 +64,9 @@ const Component = ({
         </Button>
 
         <Button.Link href={`/${project.id}`}>
-          <Icon name='eye' />
+          <Icon name='x' />
 
-          <span>View</span>
+          <span>Cancel</span>
         </Button.Link>
       </Header>
 
@@ -71,8 +74,16 @@ const Component = ({
         <FormItem title='Title'>
           <input
             className='p-2 w-full  border-2 border-indigo-100 rounded-lg appearance-none transition focus:border-indigo-300'
-            value={project.title}
-            onChange={e => state.project.get(project.id).title.set(e.target.value)}
+            value={local.title.get()}
+            onChange={e => local.title.set(e.target.value)}
+          />
+        </FormItem>
+
+        <FormItem title='Slug'>
+          <input
+            className='p-2 w-full  border-2 border-indigo-100 rounded-lg appearance-none transition focus:border-indigo-300'
+            value={local.id.get()}
+            onChange={e => local.id.set(e.target.value)}
           />
         </FormItem>
 
@@ -88,27 +99,24 @@ const Component = ({
       {[
         {
           title: 'Session',
-          item: project.session,
-          method: state.project.get(project.id).session
+          item: local.session
         },
         {
           title: 'Stopover',
-          item: project.stopover,
-          method: state.project.get(project.id).stopover
+          item: local.stopover
         },
         {
           title: 'Playtime',
-          item: project.playtime,
-          method: state.project.get(project.id).playtime
+          item: local.playtime
         }
-      ].map(({ title, item, method }) => (
+      ].map(({ title, item }) => (
         <Form title={title} key={title}>
           <FormItem title='Time'>
             <CNumber
               min={1}
               max={1440}
-              value={item.time}
-              change={value => method.time.set(value)}
+              value={item.time.get()}
+              change={value => item.time.set(value)}
             />
           </FormItem>
 
@@ -120,9 +128,9 @@ const Component = ({
 
                 state.sound.play(name)
 
-                method.sound.set(name)
+                item.sound.set(name)
               }}
-              value={item.sound}
+              value={item.sound.get()}
             >
               {state.sound.all().map(i => (
                 <option value={i} key={i}>
@@ -133,7 +141,11 @@ const Component = ({
           </FormItem>
 
           <FormItem title='Sound Repeat'>
-            <CNumber min={1} value={item.repeat} change={value => method.repeat.set(value)} />
+            <CNumber
+              min={1}
+              value={item.repeat.get()}
+              change={value => item.repeat.set(value)}
+            />
           </FormItem>
         </Form>
       ))}

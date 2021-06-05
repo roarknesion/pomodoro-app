@@ -1,5 +1,6 @@
 import {
   IconAlien,
+  IconCheck,
   IconChevronDown,
   IconEye,
   IconLoader,
@@ -23,7 +24,8 @@ const icons = {
   'player-pause': IconPlayerPause,
   'chevron-down': IconChevronDown,
   'trash': IconTrash,
-  'eye': IconEye
+  'eye': IconEye,
+  'check': IconCheck
 }
 
 export type Props = {
